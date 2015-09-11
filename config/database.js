@@ -13,7 +13,7 @@ module.exports = function(uri){
 	});
 
 	mongoose.connection.on('error', function(erro){
-		console.log('Mongoose! Erro na coneccao: '+ erro);
+		console.log('Mongoose! Erro na conexao: '+ erro);
 	});
 
 	process.on('SIGINT', function(){
