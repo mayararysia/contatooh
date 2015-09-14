@@ -1,4 +1,4 @@
-{<img src="https://travis-ci.org/mayararysia/contatooh.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/mayararysia/contatooh]
+https://travis-ci.org/mayararysia/contatooh.svg?branch=master
 
 # contatooh
 Não esqueça de executar no console os comandos:
