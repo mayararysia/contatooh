@@ -1,4 +1,4 @@
-https://travis-ci.org/mayararysia/contatooh.svg?branch=master
+[![Build Status](https://travis-ci.org/mayararysia/contatooh.svg?branch=master)](https://travis-ci.org/mayararysia/contatooh)
 
 # contatooh
 Não esqueça de executar no console os comandos:
