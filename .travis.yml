@@ -1,27 +1,41 @@
 language: node_js
 node_js:
-  - 0.10
+- 0.1
 services:
-  - mongodb
+- mongodb
 notifications:
-  - mayara.ryzia@gmail.com
+- mayara.ryzia@gmail.com
 env:
   global:
-    - NODE_ENV: test
+  - NODE_ENV: test
 addons:
   sauce_connect: true
 before_install:
-  - npm install -g bower@1.3
-  - npm install -g grunt-cli@0.1
-  - npm install -g karma-cli@0.0
-  - npm install -g protractor@1.5
-  - webdriver-manager update  
-  - bower install
+- npm install -g bower@1.3
+- npm install -g grunt-cli@0.1
+- npm install -g karma-cli@0.0
+- npm install -g protractor@1.5
+- webdriver-manager update
+- bower install
 before_script:
-  - node test/data.js 
-  - grunt
-  - cd dist
+- node test/data.js
+- grunt minifica
 script:
- - karma start config/karma.config.js --single-run --browsers PhantomJS
- - node server &
- - protractor config/protractor.js
+- karma start config/karma.config.js --single-run --browsers PhantomJS
+- node server &
+- protractor config/protractor.js
+deploy:
+  provider: openshift
+  user: mayara.ryzia@gmail.com
+  password:
+    secure: ts/fVAhbTmBEVSet/XHC7KlY6JOAv94gz7Tadb192nk2KqOQhyFVnWmwwBQTCvpdU0UI57JmwA4QZ4tYKuqP8Vffzrs8uNG+O6RZd09wf3N/Aur6OH1x9kzFTLS9sdL8b4ceKOrJkk7X4kPmskB7IaX4FvvatMtesYN0/+6MRsDORWAskR9QISN8KxRujLUfy0AQG5TRNGLN7RzFn8HyKF3ZJtT5YHk/azgzahU1ABCktRSJOXI9AIK0Ck09qZsmJsmou1FgYZRxuT084wo0bwqXxvWdDzLBsFW1/p/S4iEQ/w3cC3WFUxzCsoL9d9EvSu2G/uRionfutaS8IoM47VJHmq02P+8SGgbb1A4jUDXQ6xuy1p+m5ZNU5nta+hEt6lEKZOj36b05TBjHmmv+LCYobI5pC+nHNuW/Fr0I8zpwtQG8SrkL9lcVLwSeiSh3/fdTlAzaKDEDlKsgfu1KRL5UhXBosksw4HEKiK2n9C0XwMm0z8zOoSOMGJHzIBcPgUB8rTNsE62aHXQUSRIZXuo1x9S5xu/7rp8KfaXTPV556J5xRlT+Mq2Vpa/BCY59nPZB2OkBh/HRMpQKqYKD/DMsM53yZxLWDA4G3PkkhBVm2Z9zr673x1ShKKuwwuxwSP6BfSrAnR5nxZsBmIkEpAmrQd2xkuqwWRMxbUHBbyA=
+  app: contatooh
+  domain: contatooh-mayararysia.rhcloud.com
+  on:
+    repo: mayararysia/contatooh
+before_deploy:
+- git config --global user.email 'travis@travis-ci.com'
+- git config --global user.name 'Travis CI'
+- git checkout $TRAVIS_BRANCH
+- git add --all
+- git commit -am "Travis commit"
