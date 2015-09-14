@@ -1,6 +1,6 @@
-var config = require('./config/config')();
 var http = require('http');
 var app  = require('./config/express')();
+var config = require('./config/config')();
 require('./config/database')(config.db);
 require('./config/passport')();
 require('./config/database.js')('mongodb://localhost/contatooh');
